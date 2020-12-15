@@ -29,9 +29,10 @@
             <label for="url">URL: </label>
             <input type="url" id="url" name="url">
         </div>
-        <div>
+        <div class="tab">
             <label for="number">Number: </label>
             <input type="number" id="number" name="number">
+            <error-output class="number-error" for="number"></error-output>
         </div>
         <div>
             <label for="tel">Telephone Number: </label>
@@ -71,12 +72,22 @@
             else emailError.textContent = "Email is Incorrect";
         });
 
+        const number = document.querySelector('#number');
+        const numberError = document.querySelector('.number-error');
+        number.addEventListener('input', function () {
+            let numberRegex = RegExp("^[1-9]{2}[]{1}[0-9]{10}$");
+            if (numberRegex.test(number))
+                numberError.textContent = "";
+            else numberError.textContent = "Number is Incorrect";
+        });
+
         const salary = document.querySelector('#salary');
         const output = document.querySelector('.salary-output');
         output.textContent = salary.value;
         salary.addEventListener('input', function () {
             output.textContent = salary.value;
         });
+
     </script>
 </body>
 
