@@ -85,10 +85,13 @@
         const pwd = document.querySelector('#pwd');
         const pwdError = document.querySelector('.pwd-error');
         pwd.addEventListener('input', function () {
-            let pwdRegex = RegExp("^[a-zA-Z]{4}[a-zA-Z]{4,}$");
-            if (pwdRegex.test(pwd.value))
+            if (pwd.value.match(/[a-z]/g) && pwd.value.match(
+                /[A-Z]/g) && pwd.value.match(
+                    /[0-9]/g) && pwd.value.match(
+                        /[^a-zA-Z\d]/g) && pwd.value.length >= 8) {
                 pwdError.textContent = "";
-            else pwdError.textContent = "Email is Incorrect";
+            }
+            else pwdError.textContent = "Password is Incorrect";
         });
 
         const salary = document.querySelector('#salary');
