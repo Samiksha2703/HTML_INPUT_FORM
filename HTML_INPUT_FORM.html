@@ -19,6 +19,7 @@
         <div>
             <label for="pwd">Password: </label>
             <input type="password" id="pwd" name="pwd">
+            <error-output class="pwd-error" for="pwd"></error-output>
         </div>
         <div>
             <label for="email">E-mail Id: </label>
@@ -79,6 +80,15 @@
             if (numberRegex.test(number))
                 numberError.textContent = "";
             else numberError.textContent = "Number is Incorrect";
+        });
+
+        const pwd = document.querySelector('#pwd');
+        const pwdError = document.querySelector('.pwd-error');
+        pwd.addEventListener('input', function () {
+            let pwdRegex = RegExp("^[a-zA-Z]{4}[a-zA-Z]{4,}$");
+            if (pwdRegex.test(pwd.value))
+                pwdError.textContent = "";
+            else pwdError.textContent = "Email is Incorrect";
         });
 
         const salary = document.querySelector('#salary');
